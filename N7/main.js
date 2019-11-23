@@ -1,23 +1,21 @@
 
-let m = 1;
-let n = 1;
-let continum = true;
+let listM = [];
 
-while(m < 25){
-  
-  while(n < m){
-    if(Math.floor(1/n) + Math.floor(1/m) == Math.floor(1/25)){
-      continum = false;
-      console.log(m, n);
-      break;
+for(let n = -1000; n < 1000; n++){
+  for(let m = -1000; m < 1000; m++){
+    if( m== 0 || n==0){
+      continue;
     }
-    else {
-      n++;
+
+    if((1/m) + (1/n) == (1/25)){
+      if(m > n){
+        listM.push({m, n});
+        break;
+      }
     }
-    
   }
-
-  m++;
-
 }
 
+console.log(listM);
+console.log(listM.sort((a,b) => {return a.m - b.m}));
+console.log(listM[0]);
