@@ -1,7 +1,7 @@
-let listOfWord = "WWW 44gg gg GG jj JJ LL gG l";
+let listOfWord = "WWW 44gg gg GG jj JJ LL gG l Soroka orokaS";
 listOfWord = listOfWord.replace(/!/g, "").replace(/,/g, "").replace(/-/g, "").replace(/:/g, "").replace(/;/g, "");
 
-let textArr = listOfWord.split(" ");
+let textArr = textArr2 = listOfWord.split(" ");
 let abbr = " "; //абривіатури
 let moreUpper = " "; //більше прописних
 let moreLower = " "; //більше рядкових
@@ -74,6 +74,31 @@ while(true){
  if(textArr.length <= 1) break
 }
 
+console.log(textArr2)
+let tempArray2;
+let shift;
+let sameWords2 = " ";
+while(true){
+  shift = textArr2.shift();
+  let temp1 = shift.split("").sort().join("");
+  let temp2;
+
+
+  tempArray2  = textArr2.filter((item, index) => {
+
+      temp2  = item.split("").sort().join("");
+      if(temp1 == temp2) {
+        textArr2 = textArr2.slice(index); 
+      }
+      return temp1 == temp2;
+  });
+
+  if(tempArray2.length!=0){
+      sameWords2 += " | " + shift + " , "+ tempArray2 + " |";
+  } 
+
+ if(textArr2.length <= 1) break
+}
 
 console.log("-----------------------------------------------------------");
 console.log(listOfWord);
@@ -83,4 +108,5 @@ console.log("Абривіатури: " +  abbr);
 console.log("Кількість цифр дорівнює кількості знаків:" + symbolsEqNum);
 console.log("Зустрічаються однакові символи " + sameSymbols);
 console.log("Зустрічаються однакові слова " + sameWords);
+console.log("Зустрічаються однакові слова " + sameWords2);
 console.log("-----------------------------------------------------------");
